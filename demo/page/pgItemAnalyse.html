@@ -1,0 +1,55 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="../../bi-core/rcp-init.js"></script>
+<link rel="stylesheet" href="../css/commonStyle.css"></link>
+<title>指标对比分析</title>
+<style type="text/css">
+.rcp-combobox-input,.rcp-datepicker-input{
+	border-radius:6px 0 0 6px;
+}
+</style>
+</head>
+<body  ><!-- onselectstart='return false' onresize="pageForm.doLayout()"-->
+<div id="rootPane" rcpStyle="rootPane:true;layout:BorderLayout;" style="border:0px;">
+	<div rcpStyle="position:west;type:Panel;" style="width:15px;"></div>
+	<div rcpStyle="position:center;layout:BorderLayout;">
+		<div rcpStyle="position:north;layout:FlowLayout;" style="height:50px;">
+			<div rcpStyle="position:left;layout:BorderLayout;" style="width:240px;height:24px;margin-left:10px;">
+				<div rcpStyle="position:west;type:Panel;" style="width:70px;height:24px;line-height:24px;text-align:right;">单位名称：</div>
+				<input type="hidden" id="dsDeptTree" rcpstyle="type:DataSource;"/>
+	    		<div id='deptTree' rcpstyle="position:left;type:DataComboBox;dataSource:dsDeptTree;idColumn:id;pidColumn:parent_id;nameColumn:dept_name;" style="width:200px;height:24px;"></div>
+			</div>
+			<div rcpStyle="position:left;layout:BorderLayout;" style="width:240px;height:24px;margin-left:10px;">
+				<div rcpStyle="position:west;type:Panel;" style="width:70px;height:24px;line-height:24px;text-align:right;">电压等级：</div>
+	    		<div id='voltLevel' rcpstyle="position:left;type:DataComboBox;" style="width:200px;height:24px;"></div>
+			</div>
+			<div id="btnQuery" class="btnCommon" rcpstyle='position:right;type:Panel;'>
+	        	<div style="float:left;"><img style="margin-top:5px; margin-left:8px;" alt="" src="../images/query.png"></div>
+	       		<div style="float:left;color:white;height:30px;line-height:30px;margin-left:5px;">查询</div>
+	        </div>
+			<div id="btnReset" class="btnCommon" rcpstyle='position:right;type:Panel;'>
+	        	<div style="float:left;"><img style="margin-top:5px;margin-left:8px;" alt="" src="../images/reset.png"></div>
+	       		<div style="float:left;color:white;height:30px;line-height:30px;margin-left:5px;">重置</div>
+	        </div>
+		</div>
+		<div rcpStyle="position:center;layout:BorderLayout;">
+			<input type="hidden" id="dsDataSource" rcpstyle="type:DataSource;"/>
+      		<div id="dataTable" rcpstyle="position:center;type:DataTable;dataSource:dsDataSource;" style="background:#FFFFFF;"></div>
+		</div>
+	</div>
+	<div rcpStyle="position:east;type:Panel;" style="width:15px;"></div>
+</div>
+</body>
+<script type="text/javascript" src="../js/ItemAnalyse.js"></script>
+<script type="text/javascript">
+var pageForm = null;
+$(function(){
+    var pageParam = Rcp.getPageParamMap();
+    pageForm=Rcp.initForm("com.sgcc.pmp.plan.center.service.ItemAnalyse", "rootPane", {pageParam:pageParam});
+})
+</script>
+</html>
